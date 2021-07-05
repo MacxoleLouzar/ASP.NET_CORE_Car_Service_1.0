@@ -1,0 +1,110 @@
+﻿@model CarServiceApp.ViewModels.CarAndCustomerViewModel
+@using CarServiceApp.Utility
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2>Car Record for customer</h2>
+<hr />
+<div class="row" style="padding-bottom:80px;">
+    <div class="col-sm-6" style="padding-bottom:80px;">
+        <a asp-action="Create" class="btn btn-primary" style="width:150px;">Add New Car</a>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="UserObj.UserName" class="custom-control-label"></label>
+            </div>
+            <div class="col-sm-8" style="padding-bottom:5px;">
+                <input asp-for="UserObj.UserName" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="UserObj.Email" class="custom-control-label"></label>
+            </div>
+            <div class="col-sm-8" style="padding-bottom:5px;">
+                <input asp-for="UserObj.Email" disabled class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>
+@*@if (Model.Cars.Count() == 0)
+    {
+    <div class="text-primary form-border"> No Car found! Please add a car ....</div>
+    }
+    else
+    {*@
+<div class="form-border">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().Vin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().style)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Cars.FirstOrDefault().Year)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Cars)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Vin)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.make)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.model)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.color)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.style)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Year)
+                </td>
+                @if (User.IsInRole(SD.CustomerUser))
+                {
+                    <td sty"width:100px>
+                        <a class=" btn btn-primary btn-sm" asp-controller="Service" asp-action="Index" asp-route-carId="@item.id">
+                            <span class="Glyphicon glyphicon-wrench"></span>&nbsp;Service History
+                        </a>
+                    </td>
+                }
+                else
+                {
+                    <td sty"width:100px>
+                        <a class=" btn btn-success btn-sm" asp-controller="Service" asp-action="Create" asp-route-carId="@item.id">
+                            <span class="Glyphicon glyphicon-plus-sign"></span>&nbsp;  New Service
+                        </a>
+                    </td>
+                }
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-sm btn-success"> Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.id" class="btn btn-sm btn-primary"> Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-sm btn-danger"> Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@*}*@

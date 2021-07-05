@@ -1,0 +1,93 @@
+﻿
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+   ViewData["Title"] = "Index";
+}
+
+<form asp-controller="Users" asp-action="Index" method="get">
+    <br />
+    <h2>Customers</h2><hr />
+
+    <div style="height:60px;">
+        <div class="col-sm-3" style="padding-top : 20px;">
+            @*<a asp-page-handler="Register" asp-action="Register" class="btn btn-primary" style="width:200px;">
+            <span class="glyphicon glyphicon-plus"></span> &nbsp; Create New Customer
+        </a>*@
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Add New Customer </a>
+        </div>
+
+        <div class=" col-sm-9">
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <b> Search: </b>
+                    <label class="radio-inline">@Html.RadioButton("option", "name")Name</label>
+                    <label class="radio-inline">@Html.RadioButton("option", "email")Email</label>
+                    <label class="radio-inline">@Html.RadioButton("option", "Phone")Phone</label>
+                </div>
+            </div>
+            @using (Html.BeginForm("Index", "Users", FormMethod.Get))
+            {
+                <div class="row">
+                    <div class="pull-right">
+                        <button type="submit" name="submit" value="search" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+                    </div>
+                    <div class=" pull-right">
+                        @Html.Editor("search", new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+    <hr />
+    <br />
+    <div class="form-border">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.PhoneNumber)
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach(var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.PhoneNumber)
+            </td>
+
+            <td> <a asp-controller="Cars" asp-action="Index" asp-route-UserId="@item.Id">
+                <img src="~/images/car2.jpg" width="40" /> &nbsp; View Cars
+
+                 </a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success"> Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary"> Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"> Delete</a>
+            </td>
+            <td></td>
+        </tr>
+            }
+        </table>
+    </div>
+</form>
+

@@ -1,0 +1,34 @@
+﻿@model CarServiceApp.Models.IndividualButton
+<td style="width:150px;">
+    <div class="btn-group" role="group">
+    @Html.Partial("_IndividualButtonPartial",
+       new IndividualButton
+       {
+           Action = "Edit ",
+           ButtonType = "btn-primary",
+           Glyph = "pencil",
+           Text = "Edit",
+           serviceId = Model.serviceId
+       })
+
+   @Html.Partial("_IndividualButtonPartial",
+        new IndividualButton
+        {
+        Action = "Details Button",
+        ButtonType = "btn-success",
+        Glyph = "list",
+        Text = "Details",
+        serviceId = Model.serviceId
+        })
+
+   @Html.Partial("_IndividualButtonPartial",
+    new IndividualButton
+    {
+        Action = "Delete Button",
+        ButtonType = "btn-danger",
+        Glyph = "trash",
+        Text = "Delete",
+        serviceId = Model.serviceId
+    })
+    </div>
+</td>

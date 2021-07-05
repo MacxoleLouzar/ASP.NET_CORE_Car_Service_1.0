@@ -1,0 +1,50 @@
+﻿@model CarServiceApp.ViewModels.CarAndServiceViewModel
+
+<div>
+    <table class="table table-condensed table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.PastserviceObj.FirstOrDefault().miles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.PastserviceObj.FirstOrDefault(). price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.PastserviceObj.FirstOrDefault().Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.PastserviceObj.FirstOrDefault().dateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.PastserviceObj.FirstOrDefault().ServiceType.Name)
+            </th>
+            <th></th>
+        </tr>
+        @foreach(var item in Model.PastserviceObj)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.miles)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.dateAdded)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.ServiceType.Name)
+        </td>
+        <td>
+            @if(item.dateAdded.Date == DateTime.Now.Date)
+            {
+            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-sm btn-danger"> Delete</a>
+            }
+        </td>
+    </tr>
+        }
+    </table>
+</div>

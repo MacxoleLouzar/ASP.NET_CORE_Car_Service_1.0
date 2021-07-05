@@ -1,0 +1,63 @@
+﻿@model CarServiceApp.Models.Service
+@{
+   ViewData["Title"] = "Delete";
+}
+
+<form asp-action="Delete">
+    <div class="form-border">
+        
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input type="hidden" asp-for="id" />
+            <input type="hidden" asp-for="CarId" />
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="miles" class="custom-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="miles" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="price" class="custom-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="price" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="Details" class="custom-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="Details" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="dateAdded" class="custom-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="dateAdded" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="ServiceType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="ServiceType.Name" disabled class="form-control" />
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
+            <a asp-action="Create" asp-controller="Service" asp-route-CarId="@Model.CarId" class="btn btn-sm btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+

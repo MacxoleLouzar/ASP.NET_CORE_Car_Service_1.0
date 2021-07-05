@@ -1,0 +1,40 @@
+﻿@model CarServiceApp.ViewModels.CarAndServiceViewModel
+<h4> Car record for Customer</h4>
+<div class="row form-border">
+    <div class="col-sm-5">
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="make" class="custom-control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px">
+                <input asp-for="make" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="model" class="custom-control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px">
+                <input asp-for="model" disabled class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 col-sm-offset-2">
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="style" class="custom-control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px">
+                <input asp-for="style" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="Year" class="custom-control-label"></label>
+            </div>
+            <div class="col-sm-9" style="padding-bottom:5px">
+                <input asp-for="Year" disabled class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>
